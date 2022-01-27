@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+      <title>丁寧語喋んな!!</title>
+
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="format-detection" content="telephone=yes">
+      <meta name="author" content="test-tify">
+      <meta name="description" content="">
+      <meta name="keywords" content="">
+
+      <style>
+        button {
+          background-color: white;
+          color: black;
+          border: 2px solid #4CAF50;
+          width: 170px;
+          height: 40px;
+          font-weight: 700;
+        }
+
+        button:hover {
+          background-color: #4CAF50;
+          color: white;
+        }
+      </style>
+    </head>
+
+    <body>
+        <main class="main" style="text-align: center;">
+          <h2>敬語なんか喋るな!!</h2>
+          <textarea id="text" rows="10" cols="50"></textarea>
+
+          <p style="text-align: center;">
+            <button type="button" id="changeButton" onclick="changeText();">変換</button>
+          </p>
+
+          <br>
+          <br>
+
+          <div>
+            <h4>↓結果↓</h4>
+            <!-- <div id="result" style="width:500px; margin:0 auto;white-space: pre-wrap;height:150px;border: 1px solid;text-align: left;"></div> -->
+            <textarea id="result" style="width:500px; margin:0 auto;white-space: pre-wrap;height:150px;border: 1px solid;text-align: left;"></textarea>
+            <p style="text-align: center;">
+              <button type="button" id="copyButton" onclick="copyClipboard('#result');">クリップボードにコピー</button>
+            </p>
+          </div>
+        </main>
+    </body>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      function changeText() {
+        const text = $('#text').val();
+        const replacedText1 = text.replaceAll('です。', 'ンゴ!');
+        const replacedText2 = replacedText1.replaceAll('です', 'ンゴ!');
+        const replacedText3 = replacedText2.replaceAll('します。', 'するンゴ!');
+        const replacedText4 = replacedText3.replaceAll('します', 'するンゴ!');
+        $('#result').html(replacedText4);
+      }
+
+      function copyClipboard(obj) {
+        const temporary = $(obj);
+        temporary.select();
+        document.execCommand('copy');
+      }
+    </script>
+</html>
